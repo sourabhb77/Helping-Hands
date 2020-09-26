@@ -3,11 +3,14 @@
  {% block content%}
 
 
-
+ <div class ='row'>
   {% for post in posts %}
   {% include 'accounts/list_layout.html' with val=post %}
 
   {% endfor %}
+ 
+  </div>
+
 
 {% endblock content %}
 
