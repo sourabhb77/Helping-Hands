@@ -1,0 +1,44 @@
+{% extends "accounts/base.html" %} 
+{% load crispy_forms_tags %} 
+{% block content%}
+<div
+  class="card shadow-lg p-1 mb-5"
+  style="
+    width: 16rem;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  "
+>
+  <img
+    class="card-img-top"
+    style="
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      height: 12rem;
+    "
+    src="https://img.freepik.com/free-photo/many-type-medical-drugs-pills-capsules-white_51195-3917.jpg?size=626&ext=jpg"
+    alt="Card image cap"
+  />
+  <div class="card-body">
+    <h5 class="card-title" style="font-family: Roboto"><b>Card title</b></h5>
+    <p class="card-text" style="font-family: Roboto">
+      {{ val.product_description}}
+      {{ val.product_name}}
+    </p>
+    <p class="card-text" style="font-family: Roboto"><b>Requirement</b></p>
+    <div class="progress">
+      <div
+        class="progress-bar progress-bar active"
+        role="progressbar"
+        aria-valuenow="50"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style="width: 50%"
+      >
+        50%
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
