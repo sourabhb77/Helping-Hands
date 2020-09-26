@@ -1,21 +1,27 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 from django.http import HttpResponse
 from .forms import ProductForm
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView , DetailView
+from .models import requirementModel
+
+
 
 # Create your views here.
 
 def home(request):
     views =[1, 2, 3]
+    
     return render(request, 'accounts/base_page.html' , {"posts" : views})
 
 
 def home2(request):
     return render(request, 'accounts/base.html')
 
-from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
-from .models import requirementModel
+
 @login_required
 def fillListForm(request):
 
@@ -38,12 +44,36 @@ def fillListForm(request):
         form = ProductForm()
     return render(request, 'accounts/st_form.html', {"form" : form , "info" : "form check"})
 
+def logout(request):
+    auth_logout(request)
+    return redirect('accounts-login')
 
 class listingListView(ListView):
     model = requirementModel
+    
     template_name = 'accounts/base_page.html'
     ordering = ['-posted_at']
     context_object_name ="posts"
+    paginate_by = 2
+
+class listDetailView(DetailView):
+    model = requirementModel
+    template_name = 'accounts/list_detail.html'
+
+
+
+class ngoListView(ListView):
+    model = requirementModel
+    template_name = 'accounts/base_page.html'
+    context_object_name ="posts"
+
+    # paginate_by =2 
+    # orderering =['-posted_at']
+    
+    def get_queryset(self):
+        user = self.request.user
+        print(user)
+        return requirementModel.objects.filter(admin=user).order_by('-posted_at')
 
 
 

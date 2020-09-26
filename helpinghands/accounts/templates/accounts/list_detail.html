@@ -1,4 +1,4 @@
-
+{% extends "accounts/base.html" %}
 {% load crispy_forms_tags %} 
 {% block content%}
 <div
@@ -10,8 +10,6 @@
     margin-right: auto;
   "
 >
-<a href="{% url 'list-detail' post.id %}">
-
   <img
     class="card-img-top"
     style="
@@ -25,8 +23,8 @@
   <div class="card-body">
     <h5 class="card-title" style="font-family: Roboto"><b>Card title</b></h5>
     <p class="card-text" style="font-family: Roboto">
-      {{ val.product_description}}
-      {{ val.product_name}}
+      {{ object.product_description}}
+      {{ object.product_name}}
     </p>
     <p class="card-text" style="font-family: Roboto"><b>Requirement</b></p>
     <div class="progress">
@@ -42,6 +40,5 @@
       </div>
     </div>
   </div>
-</a>
 </div>
 {% endblock content %}
