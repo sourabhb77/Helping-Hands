@@ -1,15 +1,14 @@
 from django.contrib import admin
 from django.urls import path
-from .views import listingListView
+from .views import listingListView , listDetailView ,ngoListView
 from . import views
 
 
 urlpatterns = [
     path("" , views.listingListView.as_view(), name= "home"),
-    path("" , views.fillListForm , name ="logout"),
-    path("new_listing" , views.fillListForm , name ="listing"),
-    path("new_listings" , views.fillListForm , name ="login"),
-    path("new_listings2" , views.fillListForm , name ="register"),
+    path("user/", ngoListView.as_view() , name='ngo_post'),
+    path("<int:pk>/", listDetailView.as_view() , name="list-detail" ),
+    path("new-listing", views.fillListForm ,name="new-Requirement")
 ]
 
 
