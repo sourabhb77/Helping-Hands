@@ -58,3 +58,4 @@ def logout(request):
 
 def description(request):
     return render(request, 'accounts/description.html')
+

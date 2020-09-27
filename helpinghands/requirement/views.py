@@ -76,3 +76,22 @@ class ngoListView(ListView):
 
 
 
+# def donation_form_receipt(request):
+#     if request.method=='POST':
+#         donation_type=request.POST.get('type')
+#         donation_quantity=request.POST.get('Quantity')
+#         donation_name=request.POST.get('ProductName')
+#         donation = Donation(
+#             donation_type=donation_type,
+#             donation_name=donation_name,
+#             donation_quantity=donation_quantity,
+#         )
+#         # donation.save()
+#         print(donation_name)
+#         print("*******************")
+#         context={
+#             'type':donation_type,
+#             'quantity':donation_quantity,
+#             'datetime':datetime.now(),
+#         }
+#     return render(request,'accounts/donation-receipt.html')
