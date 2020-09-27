@@ -10,7 +10,7 @@
     margin-right: auto;
   "
 >
-<a href="{% url 'list-detail' post.id %}">
+<!-- <a href="{% url 'list-detail' post.id %}"> -->
 
   <img
     class="card-img-top"
@@ -23,10 +23,10 @@
     alt="Card image cap"
   />
   <div class="card-body">
-    <h5 class="card-title" style="font-family: Roboto"><b>Card title</b></h5>
+    <h5 class="card-title" style="font-family: Roboto"><b>{{ val.product_name}}</b></h5>
     <p class="card-text" style="font-family: Roboto">
       {{ val.product_description}}
-      {{ val.product_name}}
+      
     </p>
     <p class="card-text" style="font-family: Roboto"><b>Requirement</b></p>
     <div class="progress">
@@ -41,7 +41,11 @@
         50%
       </div>
     </div>
+    {% if not user.is_staff %}
+      <br>
+      <center><a href="{% url 'list-detail' post.id %}" class="btn btn-success" id="" style="width: 200px;">Donate Now</a></center>
+    {% endif %}
   </div>
-</a>
+<!-- </a> -->
 </div>
 {% endblock content %}

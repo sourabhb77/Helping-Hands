@@ -54,7 +54,7 @@ class listingListView(ListView):
     template_name = 'accounts/base_page.html'
     ordering = ['-posted_at']
     context_object_name ="posts"
-    paginate_by = 2
+    paginate_by = 4
 
 class listDetailView(DetailView):
     model = requirementModel
@@ -67,7 +67,7 @@ class ngoListView(ListView):
     template_name = 'accounts/base_page.html'
     context_object_name ="posts"
 
-    # paginate_by =2 
+    # paginate_by =4
     # orderering =['-posted_at']
     
     def get_queryset(self):

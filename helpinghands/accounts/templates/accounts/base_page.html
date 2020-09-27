@@ -45,6 +45,32 @@
     {% endif %}
   </div>
 
+
+  <h3>Donations Till Now Done</h3>
+    {% if donation_list %}
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Material Name</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for donation in donation_list %}
+            <tr>
+              <th scope="row">1</th>
+              <td>{{ donation.user_name }}</td>
+              <td>{{ donation.material_name }}</td>
+              <td>{{ donation.quantity }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <p>No Donations are available.</p>
+    {% endif %}
   {% endblock content %}
 
 
