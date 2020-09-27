@@ -26,19 +26,19 @@
     <h5 class="card-title" style="font-family: Roboto"><b>{{ val.product_name}}</b></h5>
     <h5 class="card-title" style="font-family: Roboto"><b>{{ val.ngo_name}}</b></h5>
     <p class="card-text" style="font-family: Roboto">
-      {{ val.product_description}}
+        {{ val.product_description}}
     </p>
-    <p class="card-text" style="font-family: Roboto"><b>Requirement</b></p>
+    <p class="card-text" style="font-family: Roboto"><b>Max Requirement : {{val.product_max_quantity }}</b></p>
     <div class="progress">
       <div
         class="progress-bar progress-bar active"
         role="progressbar"
         aria-valuenow="50"
         aria-valuemin="0"
-        aria-valuemax="100"
-        style="width: 50%"
+        aria-valuemax="{{ val.product_max_quantity }}"
+        style="width: {% widthratio val.product_max_quantity 1 val.current_quantity %}%"
       >
-        50%
+        {{ val.current_quantity }}
       </div>
     </div>
     {% if not user.is_staff %}

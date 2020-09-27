@@ -19,6 +19,7 @@ class requirementModel(models.Model):
     # x=User.objects.get(username=admin).first_name
     ngo_name = models.CharField(max_length = 20,default="fehjrj",editable=False)
     product_max_quantity = models.IntegerField(default= 1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    current_quantity = models.IntegerField(default= 0 , validators=[MaxValueValidator(100) , MinValueValidator(0)])
 
     # product_Image = models.FileField(upload_to="documents/", validators=[validate_file_extension])
 
