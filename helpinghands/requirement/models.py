@@ -11,8 +11,6 @@ class requirementModel(models.Model):
         Ventilators = 'Ventilators'
         Beds = 'Beds'
         Other = 'Other'
-        GRADUATE = 'GR'
-
 
     posted_at = models.DateTimeField(default = timezone.now)
     product_name = models.CharField(max_length = 20)
