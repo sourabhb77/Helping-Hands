@@ -7,7 +7,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView , DetailView
 from .models import requirementModel, DonationModel 
-
+from datetime import datetime
 
 
 # Create your views here.
@@ -76,19 +76,29 @@ class ngoListView(ListView):
 
 
 
-class donation_form_receipt(DetailView):
-    model = DonationModel
-    template_name = 'accounts/donation-receipt.html'
+# class donation_form_receipt(DetailView):
+#     model = DonationModel
+#     template_name = 'accounts/donation-receipt.html'
 
-# def donation_form_receipt(request, ):
-#     if request.method=='POST':
-#         # quantity_donated = request.POST.get('quantity_donated')
-#         # doner_id = request.user.username
-#         # product_id = x.product_id
-#         # category = x.category
-#         # product_name = x.product_name
-#         # quantity_donated = x.quantity_donated
-#         print("\n**********************\n")
-#         print("sdceweiwue")
-#         print("\n**********************\n")
-#     return render(request,'accounts/donation-receipt.html')
+def donation_form_receipt(request):
+    # model = requirementModel
+    # template_name = 'accounts/list_detail.html'
+    if request.method=='POST':
+        quantity_donated = request.POST.get('quantity_donated')
+        # print(quantity_donated)
+        # print("\n**********************\n")
+        doner_id = request.user.username
+        product_id = request.POST.get('product_name')
+        category = request.POST.get('product_name')
+        product_name = request.POST.get('product_name')   
+        donationModel = DonationModel(product_name=product_name,category=category,doner_id=doner_id,product_id=product_id,quantity_donated=quantity_donated)
+        donationModel.save()
+        # print(quantity_donated)
+        print("\n**********************\n")
+        context= {
+            "product_name":product_name,
+            "category":category,
+            "date":datetime.now(),
+            "quantity_donated":quantity_donated,
+        }
+    return render(request,'accounts/donation-receipt.html',context)

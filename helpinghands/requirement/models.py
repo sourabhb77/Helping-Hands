@@ -36,10 +36,10 @@ class requirementModel(models.Model):
 ###### not yet completed
 class DonationModel(models.Model):
     doner_id =  models.CharField(max_length=20)
-    product_id  = models.CharField(max_length=20)
-    category = models.CharField(max_length=20)
-    product_name = models.CharField(max_length=20)
-    quantity_donated = models.CharField(max_length=20)
+    product_id  = models.CharField(max_length=20, null=True)
+    category = models.CharField(max_length=20, null=True)
+    product_name = models.CharField(max_length=20, null=True)
+    quantity_donated = models.CharField(max_length=20, null=True)
     donated_at = models.DateTimeField(default = timezone.now)
     
     def __str__(self):

@@ -4,20 +4,42 @@
 
 
 {% block content %}
-    <h1>{{info}}</h1>
+
+    <style>
+        
+    </style>
+
+    <center><h1 class="border-bottom mb-4 p-3">Add requirement:</h1>
   <div     class="content-section"> 
     <form method="POST">
         {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">
-                Please Fill All Details
-            </legend>
-            {{form|crispy}}
+        <fieldset class="form-group container">
+            
+            <div class="row">
+                <div class="col text-right border-bottom pb-4 ml-5">Material Name:</div>
+                <div class="col text-left border-bottom mr-5">{{ form.product_name }}</div>
+                <div class="w-100"></div><hr>
+                <div class="col text-right border-bottom pb-4 ml-5">Material Description:</div>
+                <div class="col text-left border-bottom mr-5">{{ form.product_description }}</div>
+                <div class="w-100"></div><hr>
+                <div class="col text-right border-bottom pb-4 ml-5">Quantity Required:</div>
+                <div class="col text-left border-bottom mr-5">{{ form.product_max_quantity }}</div>
+                <div class="w-100"></div><hr>
+                <div class="col text-right border-bottom pb-4 ml-5">Material Category:</div>
+                <div class="col text-left border-bottom mr-5">{{ form.category }}</div>
+              </div>
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-outline-info" type="submit"> SUBMIT</button>
+            <button class="btn btn-success" type="submit"> ADD</button>
         </div>
     </form>
 </div>
+</center>
+
+<script>
+    var fields = document.getElementsByTagName("input");
+  
+    fields[1].placeholder = "Eg. Crocin Tablet";
+  </script>
 
 {% endblock content %}

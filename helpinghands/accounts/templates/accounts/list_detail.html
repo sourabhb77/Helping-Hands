@@ -85,6 +85,15 @@
       </div>
   </div>
   <hr>
+  <form action="{% url 'receipt' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="ngo_name" id="customRange3" style="width: 100%;" value="{{ object.ngo_name }}" disabled>
+
+    <input type="text" name="product_name" id="customRange3" style="width: 100%;" value="{{ object.product_name }}" disabled>
+
+    <input type="text" name="product_description" id="customRange3" style="width: 100%;" value="{{ object.product_description }}" disabled>
+
+
   <div class="row">
       <div class="col-sm-3">
           <h5 class="text-left">Enter Quantity:</h5>
@@ -94,9 +103,15 @@
       </div>
       
       <div class="col-sm-4">
-          <center><a href="{% url 'receipt' object.id  %}" class="btn btn-success" id="" style="width: 200px; height: 35px;">Donate Now!</a></center>
+          <center>
+            <button type="submit" class="btn btn-success" id="" style="width: 200px; height: 35px;">
+              Donate Now!
+            </button>
+            
+          </center>
       </div>
   </div>
+</form>
   <br><br>
 
 
