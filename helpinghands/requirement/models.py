@@ -35,8 +35,8 @@ class requirementModel(models.Model):
 
 ###### not yet completed
 class DonationModel(models.Model):
-    doner_id = models.ForeignKey(User,on_delete=models.CASCADE)
-    product_id  = models.ForeignKey(requirementModel, on_delete=models.CASCADE)
+    doner_id =  models.CharField(max_length=20)
+    product_id  = models.CharField(max_length=20)
     category = models.CharField(max_length=20)
     product_name = models.CharField(max_length=20)
     quantity_donated = models.CharField(max_length=20)
