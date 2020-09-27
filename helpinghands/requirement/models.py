@@ -16,11 +16,13 @@ class requirementModel(models.Model):
     product_name = models.CharField(max_length = 20)
     product_description = models.TextField()
     admin = models.ForeignKey(User , on_delete=models.CASCADE)
+    # x=User.objects.get(username=admin).first_name
+    ngo_name = models.CharField(max_length = 20,default="fehjrj",editable=False)
     product_max_quantity = models.IntegerField(default= 1, validators=[MaxValueValidator(100), MinValueValidator(1)])
 
     # product_Image = models.FileField(upload_to="documents/", validators=[validate_file_extension])
 
-    Category = models.CharField(
+    category = models.CharField(
         choices = requirementCategory.choices,
         default = 'Medicines',
          max_length=20
@@ -29,7 +31,16 @@ class requirementModel(models.Model):
     def __str__(self):
         return self.product_name
 
+
+###### not yet completed
+class DonationModel(models.Model):
+    doner_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    product_id  = models.ForeignKey(requirementModel, on_delete=models.CASCADE)
+    category = models.CharField(max_length=20)
+    product_name = models.CharField(max_length=20)
+    quantity_donated = models.CharField(max_length=20)
+    donated_at = models.DateTimeField(default = timezone.now)
     
-
-
+    def __str__(self):
+        return self.donation_name
 

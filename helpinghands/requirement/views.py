@@ -24,13 +24,12 @@ def home2(request):
 
 @login_required
 def fillListForm(request):
-
-    
     if request.method == "POST":
         form = ProductForm(request.POST)
         if form.is_valid():
             form.user = request.user
             form.instance.admin =  request.user
+            form.instance.ngo_name = User.objects.get(username=form.instance.admin).first_name
             form.save()
             # username = form.changed_data.get("username")
             # messages.success(request, f'Listing Created')
